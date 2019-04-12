@@ -1,8 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Максим](https://up.htmlacademy.ru/php/9/user/630381).
-* Наставник: (https://up.htmlacademy.ru/php/9/user/630381).
-* Наставник: `Евгений Шумейко`.
+* Наставник: [Евгений Шумейко](https://htmlacademy.ru/profile/id910113).
 
 ---
 
