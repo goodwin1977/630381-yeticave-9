@@ -47,6 +47,9 @@ $lots = [
     ]
 ];
 
+$cat_count = count($categories); // кол-во элементов в массиве
+// echo $cat_count;
+$i = 0; // счетчик цикла
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -85,9 +88,12 @@ $lots = [
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
-            </li>
+            <!-- С использованием цикла WHILE -->
+            <?php while($i < $cat_count): ?>
+                <li class="promo__item promo__item--boards">
+                    <a class="promo__link" href="pages/all-lots.html"><?=$categories[$i];?></a>
+                </li>
+        <?php $i++; endwhile; ?>
         </ul>
     </section>
     <section class="lots">
@@ -123,9 +129,12 @@ $lots = [
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <li class="nav__item">
-                <a href="pages/all-lots.html">Название категории</a>
-            </li>
+            <!-- С использованием цикла FOR -->
+            <?php for($i = 0; $i < $cat_count; $i++): ?>
+                <li class="nav__item">
+                    <a href="pages/all-lots.html"><?=$categories[$i];?></a>
+                </li>
+        <?php endfor; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
