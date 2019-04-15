@@ -88,12 +88,12 @@ $i = 0; // счетчик цикла
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
-            <!-- С использованием цикла WHILE -->
-            <?php while($i < $cat_count): ?>
+            
+            <?php foreach($categories as $value): ?>
                 <li class="promo__item promo__item--boards">
-                    <a class="promo__link" href="pages/all-lots.html"><?=$categories[$i];?></a>
+                    <a class="promo__link" href="pages/all-lots.html"><?=$value;?></a>
                 </li>
-        <?php $i++; endwhile; ?>
+        <?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -131,12 +131,12 @@ $i = 0; // счетчик цикла
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <!-- С использованием цикла FOR -->
-            <?php for($i = 0; $i < $cat_count; $i++): ?>
+            
+            <?php foreach($categories as $value): ?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?=$categories[$i];?></a>
+                    <a href="pages/all-lots.html"><?=$value;?></a>
                 </li>
-        <?php endfor; ?>
+        <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
