@@ -47,9 +47,7 @@ $lots = [
     ]
 ];
 
-$cat_count = count($categories); // кол-во элементов в массиве
-// echo $cat_count;
-$i = 0; // счетчик цикла
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
