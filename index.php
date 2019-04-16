@@ -102,9 +102,9 @@ $lots = [
         <ul class="promo__list">
             <!--заполните список из массива категорий-->
             
-            <?php foreach($categories as $value): ?>
+            <?php foreach($categories as $category_name): ?>
                 <li class="promo__item promo__item--boards">
-                    <a class="promo__link" href="pages/all-lots.html"><?=$value;?></a>
+                    <a class="promo__link" href="pages/all-lots.html"><?=$category_name;?></a>
                 </li>
         <?php endforeach; ?>
         </ul>
@@ -145,9 +145,9 @@ $lots = [
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
             
-            <?php foreach($categories as $value): ?>
+            <?php foreach($categories as $category_name): ?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?=$value;?></a>
+                    <a href="pages/all-lots.html"><?=$category_name;?></a>
                 </li>
         <?php endforeach; ?>
         </ul>
