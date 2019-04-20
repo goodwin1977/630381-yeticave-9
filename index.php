@@ -1,7 +1,50 @@
 <?php
 $is_auth = rand(0, 1);
+$user_name = 'Максим'; // укажите здесь ваше имя
 
-$user_name = ''; // укажите здесь ваше имя
+// Массив категорий
+$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+
+// Массив объявлений
+
+$lots = [
+    [
+        'lot_title' => '2014 Rossignol District Snowboard',
+        'cat' => 'Доски и лыжи',
+        'price' => '10999',
+        'url' => 'img/lot-1.jpg'
+    ],
+    [
+        'lot_title' => 'DC Ply Mens 2016/2017 Snowboard',
+        'cat' => 'Доски и лыжи',
+        'price' => '159999',
+        'url' => 'img/lot-2.jpg'
+    ],
+    [
+        'lot_title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+        'cat' => 'Крепления',
+        'price' => '8000',
+        'url' => 'img/lot-3.jpg'
+    ],
+    [
+        'lot_title' => 'Ботинки для сноуборда DC Mutiny Charoca',
+        'cat' => 'Ботинки',
+        'price' => '10999',
+        'url' => 'img/lot-4.jpg'
+    ],
+    [
+        'lot_title' => 'Куртка для сноуборда DC Mutiny Charocal',
+        'cat' => 'Одежда',
+        'price' => '7500',
+        'url' => 'img/lot-5.jpg'
+    ],
+    [
+        'lot_title' => 'Маска Oakley Canopy',
+        'cat' => 'Разное',
+        'price' => '5400',
+        'url' => 'img/lot-6.jpg'
+    ]
+];
 
 function format_price($price_float) 
 {
@@ -37,6 +80,22 @@ function format_price($price_float)
         <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
+            <?php if ($is_auth === 1): ?>
+                <div class="user-menu__logged">
+                    <p><?=$user_name; ?></p>
+                    <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
+                    <a class="user-menu__logout" href="#">Выход</a>
+                </div>
+            <?php else: ?>
+                <ul class="user-menu__list">
+                    <li class="user-menu__item">
+                    <a href="#">Регистрация</a>
+                    </li>
+                    <li class="user-menu__item">
+                    <a href="#">Вход</a>
+                    </li>
+                </ul>
+            <?php endif; ?>
 
         <!-- здесь должен быть PHP код для показа меню и данных пользователя -->
 
@@ -49,10 +108,13 @@ function format_price($price_float)
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-            <!--заполните этот список из массива категорий-->
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
-            </li>
+            <!--заполните список из массива категорий-->
+            
+            <?php foreach($categories as $category_name): ?>
+                <li class="promo__item promo__item--boards">
+                    <a class="promo__link" href="pages/all-lots.html"><?=$category_name;?></a>
+                </li>
+        <?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -77,8 +139,8 @@ function format_price($price_float)
                             12:23
                         </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            
         </ul>
     </section>
 </main>
@@ -88,9 +150,12 @@ function format_price($price_float)
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <li class="nav__item">
-                <a href="pages/all-lots.html">Название категории</a>
-            </li>
+            
+            <?php foreach($categories as $category_name): ?>
+                <li class="nav__item">
+                    <a href="pages/all-lots.html"><?=$category_name;?></a>
+                </li>
+        <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
