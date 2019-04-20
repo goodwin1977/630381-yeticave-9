@@ -123,6 +123,7 @@ function format_price($price_float)
         </div>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
+            <!--  -->
             <li class="lots__item lot">
                 <div class="lot__image">
                     <img src="" width="350" height="260" alt="">
