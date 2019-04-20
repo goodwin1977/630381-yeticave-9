@@ -3,13 +3,13 @@ $is_auth = rand(0, 1);
 
 $user_name = ''; // укажите здесь ваше имя
 
-function price($price_float) {
+function format_price($price_float) 
+{
     $price = ceil($price_float);
-        if ($price > 1000) {
+        if ($price >= 1000) {
             return $price = number_format($price, 0, "", " ");
-        } else {
-    return $price;
-  }
+        } 
+     return $price;
 }
 
 ?>
@@ -71,7 +71,7 @@ function price($price_float) {
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=price(1234567);?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=format_price(1000);?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
