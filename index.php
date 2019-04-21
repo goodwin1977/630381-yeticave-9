@@ -49,12 +49,9 @@ $lots = [
 function format_price($price_float) 
 {
     $price = ceil($price_float);
-        if ($price >= 1000) {
-            return $price = number_format($price, 0, "", " ");
-        } 
-     return $price;
-}
-
+    return $price = number_format($price, 0, "", " ");
+} 
+     
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -114,7 +111,7 @@ function format_price($price_float)
                 <li class="promo__item promo__item--boards">
                     <a class="promo__link" href="pages/all-lots.html"><?=$category_name;?></a>
                 </li>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -134,7 +131,7 @@ function format_price($price_float)
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=format_price(1000);?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=format_price(123);?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
