@@ -46,7 +46,12 @@ $lots = [
     ]
 ];
 
-
+function format_price(float $price_float): string
+{
+    $price = ceil($price_float);
+    return number_format($price, 0, "", " ") . ' ₽';
+} 
+     
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -106,7 +111,7 @@ $lots = [
                 <li class="promo__item promo__item--boards">
                     <a class="promo__link" href="pages/all-lots.html"><?=$category_name;?></a>
                 </li>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -126,7 +131,7 @@ $lots = [
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=$v['price'];?><b class="rub">р</b></span>
+                                <span class="lot__cost"><?=format_price($v['price']);?></span>
                             </div>
                             <div class="lot__timer timer">
                                 12:23
@@ -134,7 +139,7 @@ $lots = [
                         </div>
                     </div>
                 </li>
-            <? endforeach; ?>
+            <? endforeach; ?>            
         </ul>
     </section>
 </main>
