@@ -46,7 +46,7 @@ $lots = [
     ]
 ];
 
-function format_price($price_float) 
+function format_price(float $price_float): string
 {
     $price = ceil($price_float);
     return number_format($price, 0, "", " ") . ' ₽';
