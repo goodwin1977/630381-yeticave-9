@@ -49,7 +49,7 @@ $lots = [
 function format_price($price_float) 
 {
     $price = ceil($price_float);
-    return $price = number_format($price, 0, "", " ");
+    return number_format($price, 0, "", " ") . ' ₽';
 } 
      
 ?>
@@ -131,7 +131,7 @@ function format_price($price_float)
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=format_price($v['price']);?><b class="rub">р</b></span>
+                                <span class="lot__cost"><?=format_price($v['price']);?></span>
                             </div>
                             <div class="lot__timer timer">
                                 12:23
