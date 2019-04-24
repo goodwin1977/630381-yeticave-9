@@ -1,75 +1,8 @@
-<?php
-$is_auth = rand(0, 1);
-$user_name = 'Максим'; // укажите здесь ваше имя
-
-// Массив категорий
-$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
-
-// Массив объявлений
-
-$lots = [
-    [
-        'lot_title' => '2014 Rossignol District Snowboard',
-        'cat' => 'Доски и лыжи',
-        'price' => '10999',
-        'url' => 'img/lot-1.jpg'
-    ],
-    [
-        'lot_title' => 'DC Ply Mens 2016/2017 Snowboard',
-        'cat' => 'Доски и лыжи',
-        'price' => '159999',
-        'url' => 'img/lot-2.jpg'
-    ],
-    [
-        'lot_title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-        'cat' => 'Крепления',
-        'price' => '8000',
-        'url' => 'img/lot-3.jpg'
-    ],
-    [
-        'lot_title' => 'Ботинки для сноуборда DC Mutiny Charoca',
-        'cat' => 'Ботинки',
-        'price' => '10999',
-        'url' => 'img/lot-4.jpg'
-    ],
-    [
-        'lot_title' => 'Куртка для сноуборда DC Mutiny Charocal',
-        'cat' => 'Одежда',
-        'price' => '7500',
-        'url' => 'img/lot-5.jpg'
-    ],
-    [
-        'lot_title' => 'Маска Oakley Canopy',
-        'cat' => 'Разное',
-        'price' => '5400',
-        'url' => 'img/lot-6.jpg'
-    ]
-];
-
-function format_price(float $price_float): string
-{
-    $price = ceil($price_float);
-    return number_format($price, 0, "", " ") . ' ₽';
-} 
-require_once('helpers.php');
-
-$page_content = include_template('index.php', [
-    'lots' => $lots,
-    'categories' => $categories
-    ]);
-$layout_content = include_template('layout.php', [
-	'content' => $page_content,
-	'categories' => $categories,
-	'title' => 'GifTube - Главная страница'
-]);
-
-print($layout_content);
-?>
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <title><?= $title; ?></title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
@@ -106,58 +39,21 @@ print($layout_content);
                 </ul>
             <?php endif; ?>
 
-       
+        <!-- здесь должен быть PHP код для показа меню и данных пользователя -->
 
         </nav>
     </div>
 </header>
 
 <main class="container">
-    <section class="promo">
-        <h2 class="promo__title">Нужен стафф для катки?</h2>
-        <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
-        <ul class="promo__list">
-            
-            <?php foreach($categories as $category_name): ?>
-                <li class="promo__item promo__item--boards">
-                    <a class="promo__link" href="pages/all-lots.html"><?=$category_name;?></a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </section>
-    <section class="lots">
-        <div class="lots__header">
-            <h2>Открытые лоты</h2>
-        </div>
-        <ul class="lots__list">
-            <?php foreach($lots as $k => $v): ?>
-                <li class="lots__item lot">
-                    <div class="lot__image">
-                        <img src="<?=$v['url'];?>" width="350" height="260" alt="">
-                    </div>
-                    <div class="lot__info">
-                        <span class="lot__category"><?=$v['cat'];?></span>
-                        <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$v['lot_title'];?></a></h3>
-                        <div class="lot__state">
-                            <div class="lot__rate">
-                                <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=format_price($v['price']);?></span>
-                            </div>
-                            <div class="lot__timer timer">
-                                12:23
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            <? endforeach; ?>            
-        </ul>
-    </section>
+  <?= $content; ?>
 </main>
 </div>
 
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
+            <!--заполните этот список из массива категорий-->
             
             <?php foreach($categories as $category_name): ?>
                 <li class="nav__item">
@@ -211,4 +107,4 @@ print($layout_content);
 <script src="flatpickr.js"></script>
 <script src="script.js"></script>
 </body>
-</html> -->
+</html>
