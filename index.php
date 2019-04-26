@@ -51,6 +51,32 @@ function format_price(float $price_float): string
     $price = ceil($price_float);
     return number_format($price, 0, "", " ") . ' ₽';
 } 
+
+// Функция расчета остаточного времени в формате HH:MM
+
+function calc_time_to_end()
+{
+    // Получить текущий timestamp
+    $ts = time();
+    // TS для полночи
+    $ts_midnight = strtotime('tomorrow');
+
+    //разница в секундах
+    $secs_to_midnight = $ts_midnight - time();
+
+    // перевод в часы
+    $hours = floor($secs_to_midnight / 3600);
+
+    // перевод в минуты
+    $minutes = floor(($secs_to_midnight % 3600) / 60);
+
+    if ($hours <= 1) {
+        return '<div class="lot__timer timer timer--finishing">' . $hours . ":" . $minutes . '</div>';
+    }
+    return '<div class="lot__timer timer">' . $hours . ":" . $minutes . '</div>';
+    
+}
+
 require_once('helpers.php');
 
 $page_content = include_template('index.php', [
