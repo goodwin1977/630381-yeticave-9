@@ -51,30 +51,27 @@ function format_price(float $price_float): string
     $price = ceil($price_float);
     return number_format($price, 0, "", " ") . ' ₽';
 } 
-
-// Функция расчета остаточного времени в формате HH:MM
-
-function calc_time_to_end()
+// вычисление времени до полуночи
+function get_time_in_hours_minutes(string $time) : array
 {
-    // Получить текущий timestamp
-    $ts = time();
-    // TS для полночи
-    $ts_midnight = strtotime('tomorrow');
-
-    //разница в секундах
-    $secs_to_midnight = $ts_midnight - time();
-
-    // перевод в часы
-    $hours = floor($secs_to_midnight / 3600);
-
-    // перевод в минуты
-    $minutes = floor(($secs_to_midnight % 3600) / 60);
-
-    if ($hours <= 1) {
-        return '<div class="lot__timer timer timer--finishing">' . $hours . ":" . $minutes . '</div>';
+    $diff_time = strtotime($time) - time();
+    if ($diff_time <= 0) {
+        return [0, 0];
     }
-    return '<div class="lot__timer timer">' . $hours . ":" . $minutes . '</div>';
-    
+        return [floor($diff_time / 3600), floor($diff_time % 3600 / 60)];
+}
+
+// форматируе часы и минуты
+function get_time_to_lot(string $lot_time) : string
+{
+    list($hours, $minutes) = get_time_in_hours_minutes($lot_time);
+    return sprintf("%02d:%02d", $hours, $minutes);
+}
+// проверка на последний час
+function is_last_hour(string $lot_time) : bool
+{
+    list($hours, $minutes) = get_time_in_hours_minutes($lot_time);
+    return $hours < 1;
 }
 
 require_once('helpers.php');

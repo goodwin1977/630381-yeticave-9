@@ -31,7 +31,9 @@
                                 <span class="lot__cost"><?=format_price($v['price']);?></span>
                             </div>
                             <!-- <div class="lot__timer timer"> -->
-                                <?= calc_time_to_end(); ?>
+                            <div class="lot__timer timer <?=is_last_hour('tomorrow') ? "timer--finishing" : '' ?>">
+                                    <?=get_time_to_lot("tomorrow") ?>
+                            </div>
                             <!-- </div> -->
                         </div>
                     </div>
