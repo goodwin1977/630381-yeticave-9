@@ -41,7 +41,7 @@ CREATE TABLE lots (
   FOREIGN KEY (owner_id) REFERENCES users(id),
   FOREIGN KEY (winner_id) REFERENCES users(id),
   FOREIGN KEY (category_id) REFERENCES categories(id),
-  INDEX lot_index (name, category_id)
+  INDEX lot_index (title, category_id)
 );
 
 -- таблица ставок
