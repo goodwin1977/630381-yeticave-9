@@ -70,7 +70,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   '100',
   '2',
   '4'),
-  
+
   ('Маска Oakley Canopy',
   'всевидящее око',
   'img/lot-6.jpg',
@@ -80,3 +80,21 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   '2',
   '6');
 
+INSERT INTO bets (cost, user_id, lot_id) VALUES 
+('11900', '1', '1'),
+('17000', '2', '3');
+
+-- получить все категории
+SELECT * FROM categories;
+
+-- получить список самых свежих ставок для лота по его идентификатору
+SELECT * FROM bets WHERE lot_id = 1 ORDER BY bet_date DESC;
+
+-- обновить название лота по его идентификатору
+UPDATE lots SET title = 'UPDATE. 2014 Rossignol District Snowboard' WHERE id = 1;
+
+-- показать лот по его id. Получите также название категории, к которой принадлежит лот
+SELECT lots.title as lot_title, categories.name as category_name FROM lots JOIN categories ON categories.id = lots.category_id WHERE lots.id = 1;
+
+-- получить самые новые, открытые лоты. Каждый лот должен включать название, стартовую цену, ссылку на изображение, цену, название категории
+SELECT lots.title, lots.start_price, lots.image_url, lots.bet_step, lots.owner_id, categories.name FROM lots RIGHT JOIN categories ON categories.id = lots.category_id WHERE finish_date > NOW() ORDER BY lots.id DESC;
