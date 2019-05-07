@@ -3,48 +3,48 @@ $is_auth = rand(0, 1);
 $user_name = 'Максим'; // укажите здесь ваше имя
 
 // Массив категорий
-$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+// $categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 
 // Массив объявлений
 
-$lots = [
-    [
-        'lot_title' => '2014 Rossignol District Snowboard',
-        'cat' => 'Доски и лыжи',
-        'price' => '10999',
-        'url' => 'img/lot-1.jpg'
-    ],
-    [
-        'lot_title' => 'DC Ply Mens 2016/2017 Snowboard',
-        'cat' => 'Доски и лыжи',
-        'price' => '159999',
-        'url' => 'img/lot-2.jpg'
-    ],
-    [
-        'lot_title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-        'cat' => 'Крепления',
-        'price' => '8000',
-        'url' => 'img/lot-3.jpg'
-    ],
-    [
-        'lot_title' => 'Ботинки для сноуборда DC Mutiny Charoca',
-        'cat' => 'Ботинки',
-        'price' => '10999',
-        'url' => 'img/lot-4.jpg'
-    ],
-    [
-        'lot_title' => 'Куртка для сноуборда DC Mutiny Charocal',
-        'cat' => 'Одежда',
-        'price' => '7500',
-        'url' => 'img/lot-5.jpg'
-    ],
-    [
-        'lot_title' => 'Маска Oakley Canopy',
-        'cat' => 'Разное',
-        'price' => '5400',
-        'url' => 'img/lot-6.jpg'
-    ]
-];
+// $lots = [
+//     [
+//         'lot_title' => '2014 Rossignol District Snowboard',
+//         'cat' => 'Доски и лыжи',
+//         'price' => '10999',
+//         'url' => 'img/lot-1.jpg'
+//     ],
+//     [
+//         'lot_title' => 'DC Ply Mens 2016/2017 Snowboard',
+//         'cat' => 'Доски и лыжи',
+//         'price' => '159999',
+//         'url' => 'img/lot-2.jpg'
+//     ],
+//     [
+//         'lot_title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+//         'cat' => 'Крепления',
+//         'price' => '8000',
+//         'url' => 'img/lot-3.jpg'
+//     ],
+//     [
+//         'lot_title' => 'Ботинки для сноуборда DC Mutiny Charoca',
+//         'cat' => 'Ботинки',
+//         'price' => '10999',
+//         'url' => 'img/lot-4.jpg'
+//     ],
+//     [
+//         'lot_title' => 'Куртка для сноуборда DC Mutiny Charocal',
+//         'cat' => 'Одежда',
+//         'price' => '7500',
+//         'url' => 'img/lot-5.jpg'
+//     ],
+//     [
+//         'lot_title' => 'Маска Oakley Canopy',
+//         'cat' => 'Разное',
+//         'price' => '5400',
+//         'url' => 'img/lot-6.jpg'
+//     ]
+// ];
 
 function format_price(float $price_float): string
 {
@@ -76,6 +76,18 @@ function is_last_hour(string $lot_time) : bool
 
 require_once('helpers.php');
 
+$link = mysqli_connect('localhost', 'root', '', 'yeticave');
+
+if ($link == false) {
+    print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
+} else {
+    mysqli_set_charset($link, "utf8");
+    $get_categories_sql = 'SELECT * FROM categories';
+    $get_categories = mysqli_query($link, $get_categories_sql);
+    $categories = mysqli_fetch_all($get_categories, MYSQLI_ASSOC);
+
+
+
 $page_content = include_template('index.php', [
     'lots' => $lots,
     'categories' => $categories
@@ -89,4 +101,5 @@ $layout_content = include_template('layout.php', [
 ]);
 
 print($layout_content);
+}
 ?>
