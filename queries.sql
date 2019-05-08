@@ -94,7 +94,7 @@ SELECT * FROM bets WHERE lot_id = 1 ORDER BY bet_date DESC;
 UPDATE lots SET title = 'UPDATE. 2014 Rossignol District Snowboard' WHERE id = 1;
 
 -- показать лот по его id. Получите также название категории, к которой принадлежит лот
-SELECT title as lot_title, categories.name as category_name FROM lots JOIN categories ON categories.id = category_id WHERE lots.id = 1;
+SELECT lots.title as lot_title, categories.name as category_name FROM lots JOIN categories ON categories.id = lots.category_id WHERE lots.id = 1;
 
 -- получить самые новые, открытые лоты. Каждый лот должен включать название, стартовую цену, ссылку на изображение, цену, название категории
-SELECT title, start_price, image_url, bet_step, owner_id, categories.name FROM lots RIGHT JOIN categories ON categories.id = category_id WHERE finish_date > NOW() ORDER BY lots.id DESC;
+SELECT title, start_price, image_url, bet_step, owner_id, categories.name as category_name, MAX(bets.cost) FROM lots RIGHT JOIN categories ON categories.id = category_id JOIN bets ON bets.lot_id = lots.id WHERE finish_date > NOW() GROUP BY lots.id DESC;
