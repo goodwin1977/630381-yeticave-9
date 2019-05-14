@@ -7,7 +7,7 @@ require_once('functions.php');
 require_once('data_function.php');
 
 
-get_link();
+//get_link();
 $categories = get_categories();
 $lots = get_all_lots();
 

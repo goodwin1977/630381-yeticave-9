@@ -6,10 +6,9 @@ function get_link()
   if ($link == false) {
     print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
     die();
-    } else {
+    } 
       mysqli_set_charset($link, "utf8");
       return $link;
-    }
 }
 
 function get_categories(): array
