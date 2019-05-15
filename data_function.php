@@ -22,21 +22,49 @@ function get_categories(): array
 
 function get_all_lots(): array
 {
-  $link = get_link();
-  $get_lots_sql =
-      'SELECT
-          lots.id,
-          lots.title as lot_title,
-          lots.start_price,
-          lots.image_url,
-          lots.finish_date,
-          categories.name as category_name
-      FROM lots
-      JOIN categories ON categories.id = lots.id
-      ORDER BY lots.finish_date DESC;';
-  $get_lots = mysqli_query($link, $get_lots_sql);
-  $lots = mysqli_fetch_all($get_lots, MYSQLI_ASSOC);
-  return $lots;
+    $link = get_link();
+    $get_lots_sql =
+        'SELECT
+            lots.id,
+            lots.title as lot_title,
+            lots.description,
+            lots.start_price,
+            lots.image_url,
+            lots.finish_date,
+            categories.name as category_name
+        FROM lots
+        JOIN categories ON categories.id = lots.id
+        ORDER BY lots.finish_date DESC;';
+    $get_lots = mysqli_query($link, $get_lots_sql);
+    $lots = mysqli_fetch_all($get_lots, MYSQLI_ASSOC);
+    return $lots;
+  
+}
+
+// функция вызова лота по id
+function get_lot_by_id(int $id): array
+{
+  if (isset($id))
+  {
+    $link = get_link();
+    $get_lot_sql =
+        'SELECT
+            lots.id,
+            lots.title,
+            lots.description,
+            lots.start_price,
+            lots.image_url,
+            lots.finish_date,
+            categories.name as category_name
+        FROM lots
+        JOIN categories ON categories.id = lots.id
+        ORDER BY lots.finish_date DESC;';
+    $get_lot = mysqli_query($link, $get_lot_sql);
+    $lot = mysqli_fetch_all($get_lot, MYSQLI_ASSOC);
+    return $lot;
+  }
+  return [];
+  
 }
 
 ?>
