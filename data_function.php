@@ -33,8 +33,7 @@ function get_all_lots(): array
             lots.finish_date,
             categories.name as category_name
         FROM lots
-        JOIN categories ON categories.id = lots.id
-        ORDER BY lots.finish_date DESC;';
+        JOIN categories ON lots.category_id = categories.id';
     $get_lots = mysqli_query($link, $get_lots_sql);
     $lots = mysqli_fetch_all($get_lots, MYSQLI_ASSOC);
     return $lots;
@@ -57,8 +56,7 @@ function get_lot_by_id(int $id): array
             lots.finish_date,
             categories.name as category_name
         FROM lots
-        JOIN categories ON categories.id = lots.id
-        ORDER BY lots.finish_date DESC;';
+        JOIN categories ON categories.id = lots.id WHERE lots.id ='. $id;
     $get_lot = mysqli_query($link, $get_lot_sql);
     $lot = mysqli_fetch_all($get_lot, MYSQLI_ASSOC);
     return $lot;

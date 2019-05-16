@@ -30,7 +30,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   'Чумовая доска',
   'img/lot-1.jpg',
   '10999',
-  '20190731',
+  '20190531',
   '500',
   '1',
   '1'),
@@ -39,7 +39,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   'Модная коллекция',
   'img/lot-2.jpg',
   '159999',
-  '20190720',
+  '20190531',
   '1000',
   '1',
   '1'),
@@ -48,7 +48,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   'супер крепления',
   'img/lot-3.jpg',
   '8000',
-  '20190630',
+  '20190531',
   '200',
   '2',
   '2'),
@@ -57,7 +57,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   'удобные ботинки',
   'img/lot-4.jpg',
   '10999',
-  '20190615',
+  '20190531',
   '500',
   '2',
   '3'),
@@ -66,7 +66,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   'удобная куртка',
   'img/lot-5.jpg',
   '7500',
-  '20190730',
+  '20190531',
   '100',
   '2',
   '4'),
@@ -75,7 +75,7 @@ INSERT INTO lots (title, description, image_url, start_price, finish_date, bet_s
   'всевидящее око',
   'img/lot-6.jpg',
   '5400',
-  '20190720',
+  '20190531',
   '100',
   '2',
   '6');
@@ -91,7 +91,7 @@ SELECT * FROM categories;
 SELECT * FROM bets WHERE lot_id = 1 ORDER BY bet_date DESC;
 
 -- обновить название лота по его идентификатору
-UPDATE lots SET title = 'UPDATE. 2014 Rossignol District Snowboard' WHERE id = 1;
+-- UPDATE lots SET title = 'UPDATE. 2014 Rossignol District Snowboard' WHERE id = 1;
 
 -- показать лот по его id. Получите также название категории, к которой принадлежит лот
 SELECT lots.title as lot_title, categories.name as category_name FROM lots JOIN categories ON categories.id = lots.category_id WHERE lots.id = 1;
