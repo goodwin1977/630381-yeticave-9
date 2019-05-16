@@ -2,7 +2,7 @@
   function format_price(float $price_float): string
   {
       $price = ceil($price_float);
-      return number_format($price, 0, "", " ") . ' ₽';
+      return number_format($price, 0, "", " ") . '<b class="rub">₽</b>';
   } 
   // вычисление времени до полуночи
   function get_time_in_hours_minutes(string $time) : array

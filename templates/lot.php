@@ -1,6 +1,6 @@
 
 <section class="lot-item container">
-  <h2><?=$lot_title?></h2>
+  <h2><?=$title?></h2>
   <div class="lot-item__content">
     <div class="lot-item__left">
       <div class="lot-item__image">
