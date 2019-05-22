@@ -4,6 +4,21 @@
       $price = ceil($price_float);
       return number_format($price, 0, "", " ") . ' ₽';
   } 
+
+  function esc (string $string) : string
+  {
+      return htmlspecialchars($string);
+  }
+  /**
+   * защита от xss конвертируем всё кроме букв
+   * @param string $string
+   * @return string
+   */
+  function esc_strong (string $string) : string
+  {
+      return htmlentities($string);
+  }
+
   // вычисление времени до полуночи
   function get_time_in_hours_minutes(string $time) : array
   {
